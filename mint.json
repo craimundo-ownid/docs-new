@@ -30,7 +30,7 @@
     },
     {
       "group": "Integrations",
-      "pages": ["wordpress","shopify","woocommerce","sap-customer-data-cloud"]
+      "pages": ["integrations/wordpress","integrations/shopify","integrations/woocommerce","integrations/sap-customer-data-cloud"]
     },
     {
       "group": "Branding",
