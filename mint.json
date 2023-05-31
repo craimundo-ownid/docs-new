@@ -26,7 +26,7 @@
     },
     {
       "group": "Quickstart",
-      "pages": ["nodejs","php",".net","java"]
+      "pages": ["integration/nodejs","integration/php","integration/dotnet","integration/java"]
     },
     {
       "group": "Integrations",
@@ -34,7 +34,7 @@
     },
     {
       "group": "Branding",
-      "pages": ["button-style", "email-templates"]
+      "pages": ["explore/button-style", "explore/email-templates","explore/email-provider","explore/localization","explore/security"]
     }
   ],
   "footerSocials": {
