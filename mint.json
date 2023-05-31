@@ -33,7 +33,7 @@
       "pages": ["integrations/wordpress","integrations/shopify","integrations/woocommerce","integrations/sap-customer-data-cloud"]
     },
     {
-      "group": "Branding",
+      "group": "Explore",
       "pages": ["explore/button-style", "explore/email-templates","explore/email-provider","explore/localization","explore/security"]
     }
   ],
