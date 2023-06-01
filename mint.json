@@ -7,7 +7,7 @@
   },
   "favicon": "/favicon.png",
   "colors": {
-    "primary": "#0069ED",
+    "primary": "#3C32C3",
     "light": "#4D9CFF",
     "dark": "#0050B4"
   },
@@ -38,7 +38,7 @@
     },
     {
       "group": "Frontend SDKs",
-      "pages": ["frontend/javascript"]
+      "pages": ["frontend/javascript","frontend/angular","frontend/reactjs"]
     }
   ],
   "footerSocials": {
