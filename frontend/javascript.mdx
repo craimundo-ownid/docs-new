@@ -1,0 +1,50 @@
+---
+title: "Javascript"
+description: "Description"
+---
+
+# Prerequisites
+
+To get the most out of this guide, you´ll need to:
+- Create an OwnID app
+- Complete a backend integration
+
+## 1. Initialize OwnID SDK
+
+Place the following code in the head of the registration or login page:
+
+```javascript login.html
+<script>
+    ((o,w,n,i,d)=>{o[i]=o[i]||(async(...a)=>((o[i].q=o[i].q||[]).push(a),{error:null,data:null})),
+    (d=w.createElement("script")).src='https://cdn.ownid.com/sdk/'+n,d.async=1,w.head.appendChild(d)})  
+    (window,document,'<appID>','ownid');
+</script>
+```
+
+## 1. Render button on login page
+
+Call the `ownid('login')` function to render the OwnID button.
+The `onLogin` function, which is triggered when the user logs in with OwnID, returns an object that is used to set the session in the frontend. This session object (e.g: session token or JWT) was created on your backend.
+
+```javascript login.html
+<body>
+    <form name="myForm">
+        <input id="email" type="text" name="email">
+        <input id="password" type="text" name="password">
+        <input type="submit" value="Submit">
+    </form>
+    <script>
+        ownid("login", {
+            loginIdField: document.getElementById("email"),
+            passwordField: document.getElementById("password"),
+            onError: (error) => console.log(error),
+            onLogin: function (data) {
+                //Set user session with data object, which was sent to OwnID server from your backend
+                localStorage.setItem('data', JSON.stringify({ token: data.token }));
+                //redirect user to the account page
+                window.location.href = '/account';
+            }
+        });
+    </script>
+</body>
+```

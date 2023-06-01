@@ -35,6 +35,10 @@
     {
       "group": "Explore",
       "pages": ["explore/button-style", "explore/email-templates","explore/email-provider","explore/localization","explore/security"]
+    },
+    {
+      "group": "Frontend SDKs",
+      "pages": ["frontend/javascript"]
     }
   ],
   "footerSocials": {
