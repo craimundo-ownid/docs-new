@@ -29,7 +29,7 @@
       "pages": ["quickstart/nodejs","quickstart/php","quickstart/dotnet","quickstart/java"]
     },
     {
-      "group": "Integrations",
+      "group": "Plugins",
       "pages": ["integrations/wordpress","integrations/shopify","integrations/woocommerce","integrations/sap-customer-data-cloud"]
     },
     {
