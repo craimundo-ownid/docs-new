@@ -1,0 +1,46 @@
+---
+title: "POST /getOwnIDDataByLoginId"
+description: "The OwnID server sends a request to retrieve OwnID data information from your database"
+---
+
+### Request Body
+
+<ParamField body="loginId" type="string" required>
+  The unique identifier of a user in the database, usually email or phone.
+</ParamField>
+
+### Response
+
+<ResponseField name="ownIdData" type="string">
+  Object that was stored in your website's database the last time the OwnID server made a `POST /setOwnIdDataByLoginId` request.
+</ResponseField>
+
+<RequestExample>
+```bash Example Request
+curl --location --request POST 'https://bazco.company/getOwnIDDataByLoginId' \
+--header 'Content-Type: application/json' \
+--data-raw '{
+   "loginId":"sol@testmail.com"
+}'
+```
+</RequestExample>
+
+<ResponseExample>
+```json Response
+{
+  "ownIdData": "<String>"
+}
+```
+```json Response If the user exists but doesn't ownIdData
+{
+  "ownIdData": ""
+}
+```
+```json Response when user doesn't exist
+{
+  "errorCode": 404,
+  "errorMessage": "User not found"
+}
+```
+</ResponseExample>
+

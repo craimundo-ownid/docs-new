@@ -4,7 +4,7 @@ description: "Learn how to integrate OwnID if you are using Java"
 ---
 
 ## 1. Create Database Field
-Create a field to store revelant information related to OwnID. Name it `ownIdData`.
+Create a field to store revelant information related to OwnID authentication. Name it `ownIdData`.
 
 <Info>
 If you have a relational database (RDBMS), be sure the field meets the following requirements:
@@ -18,8 +18,9 @@ OwnID requires your endpoints to conform to the following specifications. These 
 
 ### Set OwnID data 
 When the user enrolls a new device, the OwnID server sends a `POST /setOwnIDDataByLoginId` request to store authentication data in your database. As an example, when a website's backend receives the following request it must associate the user identified by `sol@testmail.com` with the provided OwnID authentication data.
+<RequestExample>
 
-```md
+```md POST test
 curl --location --request POST 'https://bazco.company/setOwnIDDataByLoginId/' \
 --header 'Content-Type: application/json' \
 --data-raw '{
@@ -27,6 +28,7 @@ curl --location --request POST 'https://bazco.company/setOwnIDDataByLoginId/' \
   "ownIdData":"<String>"
 }'
 ```
+</RequestExample>
 
 **Request Parameters**
 

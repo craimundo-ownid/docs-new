@@ -8,13 +8,13 @@
   "favicon": "/favicon.png",
   "colors": {
     "primary": "#3C32C3",
-    "light": "#4D9CFF",
+    "light": "#4A3AFF",
     "dark": "#0050B4"
   },
   "topbarLinks": [
   ],
   "topbarCtaButton": {
-    "name": "Get Started",
+    "name": "Sign-in",
     "url": "https://console.ownid.com"
   },
   "anchors": [
@@ -25,20 +25,20 @@
       "pages": ["introduction"]
     },
     {
-      "group": "Quickstart",
-      "pages": ["quickstart/nodejs","quickstart/php","quickstart/dotnet","quickstart/java"]
+      "group": "Build your integration",
+      "pages": [
+        "quickstart/get-started",
+        "quickstart/github-samples",
+        "explore/security"
+      ]
     },
     {
-      "group": "Plugins",
-      "pages": ["integrations/wordpress","integrations/shopify","integrations/woocommerce","integrations/sap-customer-data-cloud"]
+      "group": "Low-code plugins",
+      "pages": ["integrations/woocommerce","integrations/shopify","integrations/sap-customer-data-cloud"]
     },
     {
       "group": "Explore",
-      "pages": ["explore/button-style", "explore/email-templates","explore/email-provider","explore/localization","explore/security"]
-    },
-    {
-      "group": "Frontend SDKs",
-      "pages": ["frontend/javascript","frontend/angular","frontend/reactjs"]
+      "pages": ["explore/button-style", "explore/email-templates","explore/email-provider","explore/localization"]
     }
   ],
   "footerSocials": {

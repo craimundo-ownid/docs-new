@@ -1,0 +1,31 @@
+---
+title: "POST setOwnIDDataByLoginId"
+description: "During login, OwnID server gets the `ownIdData` from your backend to resolve the biometric login challenge"
+---
+
+### Request Body
+
+<ParamField body="loginId" type="string" required>
+  The unique identifier of a user in the database, usually email or phone.
+</ParamField>
+
+<ParamField body="ownIdData" type="string" required>
+  The OwnID authentication data object
+</ParamField>
+
+<RequestExample>
+```bash Example Request
+curl --location --request POST 'https://bazco.company/setOwnIDDataByLoginId/' \
+--header 'Content-Type: application/json' \
+--data-raw '{
+  "loginId": "sol@testmail.com",
+  "ownIdData":"<String>"
+}'
+```
+</RequestExample>
+
+<ResponseExample>
+```json Response
+{ }
+```
+</ResponseExample>
