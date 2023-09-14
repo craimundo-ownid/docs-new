@@ -1,0 +1,95 @@
+---
+title: "Adobe Commerce Cloud"
+description: "Quickstart Integration Guide"
+---
+
+# Frontend Integration
+## Step 1 - Load OwnID’s Web-SDK
+
+Incorporate the OwnID web-SDK in your main page using the script below:
+
+```javascript
+<script>
+    ((o,w,n,i,d)=>{o[i]=o[i]||(async(...a)=>((o[i].q=o[i].q||[]).push(a),{error:null,data:null})),
+    (d=w.createElement("script")).src='https://cdn.ownid.com/sdk/'+n,d.async=1,w.head.appendChild(d)})  
+    (window,document,'<appId>','ownid');
+</script>
+```
+
+<Info>Replace `appId` with your actual OwnID application ID.</Info>
+
+## Step 2 - Add OwnID button to your login form
+
+Display the passwordless widget alongside the traditional login form by invoking the function below:
+
+```javascript
+    ownid("login", {
+        loginIdField: document.getElementById("email_address"),
+        passwordField: document.getElementById("password"),
+        onError: (error) => console.log(error),
+        onLogin: (data) => localStorage.setItem('M2_VENIA_BROWSER_PERSISTENCE__signin_token', JSON.stringify({ value: data.token })),
+    });
+```
+
+# Backend Integration
+
+## Step 1: Extend Customer Entity’s Schema
+
+In the CustomerSetupFactory, update the "setup" to include an `ownIdData` field attribute with the properties below:
+
+```curl
+[
+  'type' => 'varchar',
+  'label' => 'OwnID Data',
+  'input' => 'text',
+  'required' => false,
+  'visible' => false,
+  'user_defined' => true,
+  'sort_order' => 1000,
+  'position' => 1000,
+  'system' => 0,
+]
+```
+
+## Step 2: Implement Endpoints
+
+<Steps>
+  <Step title="POST /api/ownid/setOwnIDDataByLoginId">
+
+<b>Description:</b> When the user enrolls a new device, OwnID server stores the user's `ownIdData` in Adobe Commerce Cloud database, through a request to your website's backend. 
+
+<b>Logic:</b> <br/>
+<li>Find and update the user using the loginId from the request.</li>
+<li>Return HTTP status code 204.</li>
+
+[API reference documentation](../api-reference/endpoint/setowniddata)
+
+  </Step>
+  <Step title="POST /api/ownid/getOwnIDDataByLoginId">
+
+<b>Description:</b> During login, OwnID server gets the `ownIdData` from your backend to resolve the biometric login challenge.
+
+<b>Logic:</b> <br/>
+<li>Utilize Magento’s CustomerRepository to locate the customer using the loginId (email) from the request.</li>
+<li>Return the ownIdData field in HTTP status code 200.</li>
+<li>If not found, return HTTP status code 404.</li>
+
+[API reference documentation](../api-reference/endpoint/getowniddata) 
+
+  </Step>
+  <Step title="POST /api/ownid/getSessionByLoginId">
+ 
+
+<b>Description:</b> During login, OwnID server requests a session object from your website's backend. The resulting session object will be transferred to the onLogin() callback in your frontend. 
+
+<b>Logic:</b> <br/>
+<li>Identify the user with the loginId from the request and initiate a token. </li>
+<li>Return the token wrapped in a JSON { token } with HTTP status code 200.</li>
+
+[API reference documentation](../api-reference/endpoint/getownidsession)
+
+  </Step>
+</Steps>
+
+# Security
+For comprehensive details about security aspects such as IP allowlisting or Content Security Policy (CSP) headers, please refer to the [Security page]('/explore/security'). 
